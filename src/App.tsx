@@ -27,7 +27,7 @@ export default function App() {
       {isLoggedIn && (
         <nav className="w-full bg-white shadow-md py-4 px-8 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-[#003366]">
-            Corol ML Lab
+           CementIQ Lab
           </h1>
 
           <div className="space-x-6 flex items-center">
