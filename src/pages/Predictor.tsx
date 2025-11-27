@@ -56,7 +56,7 @@ export default function Predictor() {
     );
 
     try {
-      const response = await fetch("http://localhost:3000/api/predict", {
+      const response = await fetch("https://corol-ml-api-1.onrender.com/api/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
