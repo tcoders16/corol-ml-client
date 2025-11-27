@@ -18,3 +18,27 @@
   50% { box-shadow: 0 0 20px #00c29a, 0 0 40px #00c29a; }
   100% { box-shadow: 0 0 5px #00c29a, 0 0 10px #00c29a; }
 }
+
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px #00ff9d; }
+  50% { box-shadow: 0 0 16px #00ff9d; }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes loaderSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes successPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
