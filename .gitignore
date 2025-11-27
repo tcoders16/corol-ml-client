@@ -27,8 +27,6 @@ vite.config.js.timestamp
 # -----------------------------
 # Environment variables
 # -----------------------------
-.env
-.env.*
 !.env.example
 
 # -----------------------------
@@ -69,3 +67,4 @@ pnpm-debug.log*
 .parcel-cache/
 .next/
 .vercel/
+config.bat

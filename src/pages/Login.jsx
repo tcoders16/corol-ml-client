@@ -53,7 +53,7 @@ export default function Login({ setToken }) {
       <div className="p-8 w-full max-w-md bg-neutral-900 border border-neutral-700 rounded-xl shadow-xl">
 
         <h1 className="text-3xl mb-6 font-chakra text-white text-center">
-          Corol-ML Login
+          CementIQ Login
         </h1>
 
         {/* ------------------- Success Animation ------------------- */}
