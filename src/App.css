@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+.neon-loader {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid rgba(0, 200, 150, 0.2);
+  border-top-color: #00c29a;
+  animation: spin 1s infinite linear, glow 1.5s infinite ease-in-out;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #00c29a, 0 0 10px #00c29a; }
+  50% { box-shadow: 0 0 20px #00c29a, 0 0 40px #00c29a; }
+  100% { box-shadow: 0 0 5px #00c29a, 0 0 10px #00c29a; }
+}
