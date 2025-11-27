@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import MixInputForm, { MixForm, MixFields } from "../components/MixInputForm";
 import PredictionResult from "../components/PredictionResults";
 
-export default function Predictor() {
+interface PredictorProps {
+  token: string;
+}
+
+export default function Predictor({ token }: PredictorProps) {
   const [form, setForm] = useState<MixForm>({
     Cement: "",
     Slag: "",
@@ -18,10 +23,22 @@ export default function Predictor() {
   const [result, setResult] = useState<{
     predicted_strength: number;
     graph: string;
+    confidence?: number;
   } | null>(null);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  /* ---------------------- TOKEN VALIDATION ---------------------- */
+  useEffect(() => {
+    if (!token || token.trim().length < 5) {
+      setErrorMsg("Unauthorized. Please log in first.");
+    }
+  }, [token]);
+
+  if (!token || token.trim().length < 5) {
+    return <Navigate to="/login" replace />;
+  }
 
   /* ------------------ Update Field ------------------ */
   function updateField(field: MixFields, value: string) {
@@ -33,7 +50,7 @@ export default function Predictor() {
     const emptyFields = Object.entries(form).filter(([_, v]) => v.trim() === "");
 
     if (emptyFields.length > 0) {
-      setErrorMsg("All material fields must be filled before predicting.");
+      setErrorMsg("All fields must be filled before prediction.");
       return false;
     }
 
@@ -56,17 +73,29 @@ export default function Predictor() {
     );
 
     try {
-      const response = await fetch("https://corol-ml-api-1.onrender.com/api/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://corol-ml-api-1.onrender.com/api/predict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // 🔥 secure
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (response.status === 401) {
+        setErrorMsg("Unauthorized request. Please login again.");
+        setLoading(false);
+        return;
+      }
 
       const data = await response.json();
       setResult(data);
     } catch (error) {
       console.error("Prediction error:", error);
-      setErrorMsg("Prediction failed. Please check the backend connection.");
+      setErrorMsg("Prediction failed. Backend unreachable.");
     }
 
     setLoading(false);
@@ -75,7 +104,7 @@ export default function Predictor() {
   return (
     <Layout
       title="Corol AI Lab — Strength Predictor"
-      subtitle="ML-driven prediction engine for sustainable concrete design"
+      subtitle="Secure ML-driven strength prediction for internal R&D"
     >
       {/* Error Message */}
       {errorMsg && (
