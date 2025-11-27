@@ -103,7 +103,7 @@ export default function Predictor({ token }: PredictorProps) {
 
   return (
     <Layout
-      title="Corol AI Lab — Strength Predictor"
+      title="CementIQ Lab — Strength Predictor"
       subtitle="Secure ML-driven strength prediction for internal R&D"
     >
       {/* Error Message */}

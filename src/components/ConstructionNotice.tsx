@@ -29,7 +29,7 @@ export default function ConstructionNotice() {
       "
     >
       <span>
-        ⚠️ The Corol AI Lab is under active development. Features are incomplete,
+        ⚠️ CementIQ Lab is under active development. Features are incomplete,
         and this environment is not secured yet. Do NOT upload sensitive or real production data.
       </span>
 

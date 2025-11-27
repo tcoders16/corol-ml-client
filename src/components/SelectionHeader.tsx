@@ -33,7 +33,7 @@ const SelectionHeader: React.FC<SelectionHeaderProps> = ({ title, subtitle }) =>
           backdrop-blur-md
         "
       >
-        Corol AI Materials Lab
+       CementIQ Materials Lab
       </div>
 
       {/* Main Title */}
