@@ -27,14 +27,11 @@ vite.config.js.timestamp
 # -----------------------------
 # Environment variables
 # -----------------------------
-.env
-.env.*
 !.env.example
 
 # -----------------------------
 # Editor settings
 # -----------------------------
-.vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
 
@@ -69,3 +66,4 @@ pnpm-debug.log*
 .parcel-cache/
 .next/
 .vercel/
+config.bat
